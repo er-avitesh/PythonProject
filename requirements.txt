@@ -1,0 +1,9 @@
+dj-database-url
+dj-static
+Django
+django-toolbelt
+djangorestframework
+gunicorn
+mysqlclient
+psycopg2
+static3
