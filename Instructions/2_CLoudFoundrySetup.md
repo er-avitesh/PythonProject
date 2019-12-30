@@ -15,6 +15,7 @@ Django
 django-toolbelt
 djangorestframework
 gunicorn
+whitenoise
 mysqlclient
 psycopg2
 static3
@@ -32,6 +33,11 @@ applications:
 ~~~
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+~~~
+
+and add below in MIDDLEWARE section
+~~~
+'whitenoise.middleware.WhiteNoiseMiddleware',
 ~~~
 
 ### Step 5 - Change below line accordingly in myproject/settings.py file.
@@ -58,7 +64,7 @@ if __name__ == "__main__":
 
 ### Step 7 - Add Procfile
 ~~~
-web: python manage.py migrate && gunicorn myproject.wsgi --log-file -
+web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn myproject.wsgi --log-file -
 ~~~ 
 
 ### Step 8 - Push App
